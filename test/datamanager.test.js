@@ -122,6 +122,7 @@ describe('Datamanager', function() {
 			var faves = dm.faves();
 			faves.should.have.property('length', 1)
 			faves[0].should.have.property('id', 2)
+			faves[0].should.have.property('content')
 		})
 	})
 
