@@ -1,6 +1,8 @@
 
 'use strict';
 
+process.env['NOTES_APP'] = 'TEST'
+
 var chai = require('chai')
 // const should = require('chai').should();
 var should = chai.should();
@@ -12,7 +14,6 @@ chai.use(chaiAsPromised);
 chai.use(sinonChai)
 
 var DataManager = require('../lib/datamanager');
-// process.env['NOTES_APP'] = 'TEST';
 
 var dm1, dm2, mockNotes, mockNote;
 

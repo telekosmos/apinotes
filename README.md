@@ -2,6 +2,11 @@
 
 Simple API for a Twitter/Notes-like scenario.
 
+## Requeriments
+- node@~4.2
+- mocha@~2.2.5
+- gulp@~3.8
+
 ## Endpoints
 - GET `/notes`, `/notes/all` return all notes
 - POST `/notes/create` create new note with parameter content
