@@ -1,6 +1,12 @@
 'use strict';
 
-const should = require('chai').should();
+var Promise = require('bluebird');
+
+var chai = require('chai');
+const should = chai.should();
+var chaiAsPromised = require('chai-as-promised')
+
+chai.use(chaiAsPromised)
 
 describe('Very basics of mocha, chai', function() {
 	it ('should assert basics', function() {
@@ -25,5 +31,11 @@ describe('Very basics of mocha, chai', function() {
 		beverages.tea.should.satisfy(longerThan3);
 		num.should.be.a('number');
 		num.should.be.gt(-1);
+	})
+
+	it('should work with promises', function() {
+		var prom = Promise.resolve({op1: 2, op2: 2, res: 4});
+		prom.should.be.fulfilled;
+		prom.should.eventually.have.property('op1')
 	})
 })
