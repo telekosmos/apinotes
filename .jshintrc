@@ -1,0 +1,10 @@
+{
+  "esnext": true,
+  "strict": "implied",
+  "undef": true,
+  "devel": true,
+  "maxdepth": 3,
+  "asi": true,
+  "node": true,
+  "mocha": true
+}

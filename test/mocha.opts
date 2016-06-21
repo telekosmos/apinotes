@@ -1,0 +1,7 @@
+--require chai
+--ui bdd
+--check-leaks
+--recursive
+--reporter nyan
+--harmony
+--compilers js:babel-core/register
