@@ -18,6 +18,7 @@ Simple API for a Twitter/Notes-like scenario.
 
 
 ## PLAY
+Tested and functional in node@~4.2
 
 `curl -X GET http://localhost:3210/notes`
 ```
