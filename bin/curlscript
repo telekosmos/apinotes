@@ -1,0 +1,6 @@
+
+curl -X POST --data 'content=This is the very first note' http://localhost:3210/notes/create
+curl -X POST --data 'content=This is the 2nd note' http://localhost:3210/notes/create
+curl -X POST --data 'content=This is the 3RD note' http://localhost:3210/notes/create
+
+curl -X GET http://localhost:3210/notes/

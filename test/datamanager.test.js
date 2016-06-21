@@ -12,6 +12,7 @@ chai.use(chaiAsPromised);
 chai.use(sinonChai)
 
 var DataManager = require('../lib/datamanager');
+// process.env['NOTES_APP'] = 'TEST';
 
 var dm1, dm2, mockNotes, mockNote;
 
@@ -62,7 +63,7 @@ describe('Datamanager', function() {
 	})
 
 	describe('Operations', function() {
-		var dm;
+		var dm, myStub;
 		before(function() {
 			dm = DataManager.DataManager('.notes.test.json');
 		})
