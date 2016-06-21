@@ -17,21 +17,25 @@ router.post('/create', function(ctx, next) {
     });  
 })
 
+// Switch id fave false <-> true
+router.post('/fave', function(ctx, next) {
+  return dataManager.setFave(ctx.request.body.id)
+    .then(res => {
+      ctx.body = res;
+    })
+})
+
+router.get('/faves', function(ctx, next) {
+  console.log('GET /notes/faves'+JSON.stringify(dataManager.faves()))
+  ctx.body = dataManager.faves();
+})
+
 router.get('/all', function(ctx, next) {
   ctx.body = dataManager.getAll();  
 })
 
 router.get('/:id', function(ctx, next) {
   ctx.body = dataManager.get(ctx.params.id);
-})
-
-router.get('/faves', function(ctx, next) {
-
-})
-
-// Mark id as fave
-router.put('/fave/:id', function(ctx, next) {
-  
 })
 
 
