@@ -22,15 +22,25 @@ router.get('/all', function(ctx, next) {
 })
 
 router.get('/:id', function(ctx, next) {
-  
+  ctx.body = dataManager.get(ctx.params.id);
 })
 
 router.get('/faves', function(ctx, next) {
-  
+
 })
 
 // Mark id as fave
 router.put('/fave/:id', function(ctx, next) {
   
 })
+
+
+router.post('/clearall', function(ctx, next) {
+  console.log('POST /notes/clearall')
+  return dataManager.clearAll()
+    .then(function(resp) {
+      ctx.body = resp;
+    })
+})
+
 module.exports = router
