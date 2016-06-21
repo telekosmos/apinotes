@@ -3,7 +3,7 @@
 Simple API for a Twitter/Notes-like scenario.
 
 ## Endpoints
-- GET `/notes/`, `/notes/all` return all notes
+- GET `/notes`, `/notes/all` return all notes
 - POST `/notes/create` create new note with parameter content
 - GET `/notes/:id` get an note with id
 - POST `/notes/fave/:id` mark a note as fave
@@ -18,6 +18,7 @@ Simple API for a Twitter/Notes-like scenario.
 
 
 ## PLAY
+Tested and functional in node@~4.2
 
 `curl -X GET http://localhost:3210/notes`
 ```
@@ -38,16 +39,19 @@ Simple API for a Twitter/Notes-like scenario.
 
 ```
 {"ok": true }
-``
+```
 
 `curl -XPOST --data 'id=3' http://localhost:3210/notes/fave`
+
 ```
 {
   "id": 3,
   "fave": true
 }
 ```
+
 `curl -XGET http://localhost:3210/notes/faves`
+
 ```
 [
   {

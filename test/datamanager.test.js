@@ -5,9 +5,14 @@ var chai = require('chai')
 // const should = require('chai').should();
 var should = chai.should();
 var chaiAsPromised = require('chai-as-promised');
+var sinon = require('sinon')
+var sinonChai = require('sinon-chai')
 
 chai.use(chaiAsPromised);
+chai.use(sinonChai)
+
 var DataManager = require('../lib/datamanager');
+// process.env['NOTES_APP'] = 'TEST';
 
 var dm1, dm2, mockNotes, mockNote;
 
@@ -15,8 +20,8 @@ describe('Datamanager', function() {
 
 	describe('instances', function() {
 		before(function() {
-			dm1 = DataManager;
-			dm2 = DataManager;
+			dm1 = DataManager.datamanager;
+			dm2 = DataManager.datamanager;
 			
 			mockNotes = [{
 				id: 1,
@@ -58,15 +63,9 @@ describe('Datamanager', function() {
 	})
 
 	describe('Operations', function() {
-		var dm;
+		var dm, myStub;
 		before(function() {
-			dm = DataManager;
-		})
-
-		it ('should clear all', function() {
-			var promise = dm.clearAll();
-			promise.should.be.fulfilled;
-			promise.should.eventually.have.property('res')
+			dm = DataManager.DataManager('.notes.test.json');
 		})
 
 		it('should create/add a new note', function() {
@@ -122,6 +121,13 @@ describe('Datamanager', function() {
 			var faves = dm.faves();
 			faves.should.have.property('length', 1)
 			faves[0].should.have.property('id', 2)
+			faves[0].should.have.property('content')
+		})
+
+		it ('should clear all', function() {
+			var promise = dm.clearAll();
+			promise.should.be.fulfilled;
+			promise.should.eventually.have.property('res')
 		})
 	})
 

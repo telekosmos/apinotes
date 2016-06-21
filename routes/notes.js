@@ -1,7 +1,7 @@
 'use strict';
 
 const router = require('koa-router')()
-const dataManager = require('../lib/datamanager')
+const dataManager = require('../lib/datamanager').datamanager;
 
 // curl -X GET http://localhost:4444/
 router.get('/', function (ctx, next) {

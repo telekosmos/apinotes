@@ -1,9 +1,12 @@
 'use strict';
 
+process.env['NOTES_APP'] = 'TEST';
+
 var request = require('supertest');
 var agent = require('supertest').agent();
 const app = require('../app');
 const should = require('chai').should();
+
 
 describe('Notes API routing', function() {
 
