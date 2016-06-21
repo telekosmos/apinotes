@@ -1,21 +1,65 @@
 # Koa notes sample
 
-Simple API for a Twitter-like scenario. 
+Simple API for a Twitter/Notes-like scenario.
 
 ## Endpoints
-- GET `/api/` return the endpoints
-- POST `/api/create` create new note
-- GET `/api/all` get all notes
-- GET `/api/:id` get note id (or, easier, /api/get/:id)
-- POST `/api/fave/:id mark a note as fave
-- GET `/api/faves get all fave notes
+- GET `/notes/`, `/notes/all` return all notes
+- POST `/notes/create` create new note with parameter content
+- GET `/notes/:id` get an note with id
+- POST `/notes/fave/:id` mark a note as fave
+- GET `/notes/faves` get all fave notes
+- POST `/notes/clearall` will clear the notes database
 
 ## STEPS
-1. API normal, como en los ejemplos
-2. Parte visual, paginitas para ver los resultados
-3. Authentication!!
+1. `git clone` this repo
+2. `npm install`
+4. `mocha` to run the tests
+3. `gulp start` will start the server listening on port 3210
 
-## DETAILS
-- Return json (check for XML)
-- Not using persisteng storate: use an array of objects to manage the notes
-- So, unit testing is everything but the routes, which can be done also
+
+## PLAY
+
+`curl -X GET http://localhost:3210/notes`
+```
+[
+  {
+    "id": 1,
+    "content": "This is only a test",
+    "fave": true
+  },
+  {
+    "id": 2,
+    "content": "2nd note",
+    "fave": false
+  }
+]
+```
+`curl -X POST --data 'content: This would be the 3RD note' http://localhost:3210/notes/create`
+
+```
+{"ok": true }
+``
+
+`curl -XPOST --data 'id=3' http://localhost:3210/notes/fave`
+```
+{
+  "id": 3,
+  "fave": true
+}
+```
+`curl -XGET http://localhost:3210/notes/faves`
+```
+[
+  {
+    "id": 1,
+    "content": "This is only a test",
+    "fave": true
+  },
+  {
+    "id": 3,
+    "fave": true
+  }
+]
+```
+
+                                       `
