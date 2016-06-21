@@ -65,5 +65,3 @@ Tested and functional in node@~4.2
   }
 ]
 ```
-
-                                       `
