@@ -81,16 +81,44 @@ describe('Notes API routing', function() {
 				.end(done)
 		})
 
-		/*
-		it('POST /fave/:id mark a note as fave', function(done) {
-			done()
+
+		it('GET /faves gets nothing', function(done) {
+			request(app.listen())
+				.get('/notes/faves')
+				.expect(200)
+				.expect(function(resp) {
+					resp.body.should.have.property('length', 0)
+				})
+				.end(done)
 		})
+
+		it('POST /fave/:id mark a note as fave', function(done) {
+			var postParams = {id: 1}
+			request(app.listen())
+				.post('/notes/fave')
+				.send(postParams)
+				.expect(200)
+				.expect(function(resp) {
+					should.exist(resp)
+					resp.body.should.have.property('id', 1)
+					resp.body.should.have.property('fave', true)
+				})
+				.end(done)
+		})
+
 
 		it('GET /faves get all favourite notes', function (done) {
-			done()
+			request(app.listen())
+				.get('/notes/faves')
+				.expect(200)
+				.expect(function(resp) {
+					resp.body.should.have.property('length', 1)
+					resp.body[0].should.have.property('fave', true)
+				})
+				.end(done)
 
 		})
-		*/
+
 	})
 
 })

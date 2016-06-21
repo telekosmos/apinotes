@@ -101,12 +101,27 @@ describe('Datamanager', function() {
 			elem.should.have.property('msg', 'Not found')
 		})
 
-		it('should mark a note as fave', function() {
+		it('shouldnt get any fave notes', function() {
+			var faves = dm.faves();
+			faves.should.have.property('length', 0)
+		})
 
+		it('should mark a note as fave', function() {
+			var elem = dm.setFave(2)
+			elem.should.be.fulfilled;
+			return elem.should.eventually.have.property('fave', true)
+		})
+
+		it('should return not found when no note found to fave', function() {
+			var promise = dm.setFave(5)
+			promise.should.be.fulfilled;
+			return promise.should.eventually.have.property('msg', 'Not found')
 		})
 
 		it('should get all fave notes', function() {
-
+			var faves = dm.faves();
+			faves.should.have.property('length', 1)
+			faves[0].should.have.property('id', 2)
 		})
 	})
 
