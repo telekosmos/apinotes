@@ -1,3 +1,6 @@
+'use strict';
+
+/* Sample index/root state with co() and generators */
 const co = require('co')
 const router = require('koa-router')()
 

@@ -2,8 +2,13 @@
 
 Simple API for a Twitter/Notes-like scenario.
 
+## Requeriments
+- node@~4.2
+- mocha@~2.2.5
+- gulp@~3.8
+
 ## Endpoints
-- GET `/notes/`, `/notes/all` return all notes
+- GET `/notes`, `/notes/all` return all notes
 - POST `/notes/create` create new note with parameter content
 - GET `/notes/:id` get an note with id
 - POST `/notes/fave/:id` mark a note as fave
@@ -39,16 +44,19 @@ Tested and functional in node@~4.2
 
 ```
 {"ok": true }
-``
+```
 
 `curl -XPOST --data 'id=3' http://localhost:3210/notes/fave`
+
 ```
 {
   "id": 3,
   "fave": true
 }
 ```
+
 `curl -XGET http://localhost:3210/notes/faves`
+
 ```
 [
   {
@@ -62,5 +70,3 @@ Tested and functional in node@~4.2
   }
 ]
 ```
-
-                                       `

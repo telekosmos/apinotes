@@ -10,7 +10,6 @@ router.get('/', function (ctx, next) {
 
 router.post('/create', function(ctx, next) {
   var content = ctx.request.body.content;
-  console.log(`/notes/create?${content}`)
   return dataManager.create(content)
     .then(res => {
       ctx.body = {ok: true};
@@ -26,7 +25,6 @@ router.post('/fave', function(ctx, next) {
 })
 
 router.get('/faves', function(ctx, next) {
-  console.log('GET /notes/faves'+JSON.stringify(dataManager.faves()))
   ctx.body = dataManager.faves();
 })
 
@@ -40,7 +38,6 @@ router.get('/:id', function(ctx, next) {
 
 
 router.post('/clearall', function(ctx, next) {
-  console.log('POST /notes/clearall')
   return dataManager.clearAll()
     .then(function(resp) {
       ctx.body = resp;
