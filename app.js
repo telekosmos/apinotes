@@ -43,7 +43,6 @@ app.use(co.wrap(function * (ctx, next) {
 }))
 
 // routes definition
-router.use('/', index.routes(), index.allowedMethods())
 router.use('/notes', notes.routes(), notes.allowedMethods())
 
 // mount root routes
